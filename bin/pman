@@ -1,0 +1,11 @@
+#!/bin/sh
+
+MAN=`which man`
+if [[ $1 == '-s' ]] || [[ $1 == '-d' ]]; then
+    MANPAGER=cat
+    if [ $1 == '-s' ]; then TO='DESCRIPTION'; else TO='PARAMETERS'; fi
+    $MAN -M ../pman/ $2 | col -b | sed -n -e "/SYNOPSIS/,/$TO/ p" | tail -r | tail -n +3 | tail -r
+else
+    echo FML
+    $MAN -M ../pman/ $1
+fi
