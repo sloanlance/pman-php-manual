@@ -1,11 +1,24 @@
 #!/bin/sh
 
+# from http://stackoverflow.com/a/697552/547956
+# get the absolute path of the executable
+SELF_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P) && SELF_PATH=$SELF_PATH/$(basename -- "$0")
+
+# resolve symlinks
+while [ -h $SELF_PATH ]; do
+    DIR=$(dirname -- "$SELF_PATH")
+    SYM=$(readlink $SELF_PATH)
+    SELF_PATH=$(cd $DIR && cd $(dirname -- "$SYM") && pwd)/$(basename -- "$SYM")
+    DIR=$(dirname -- "$SELF_PATH")
+done
+
+PARENT_DIR=$(cd $DIR/../ && pwd)
+
 MAN=`which man`
 if [[ $1 == '-s' ]] || [[ $1 == '-d' ]]; then
     MANPAGER=cat
     if [ $1 == '-s' ]; then TO='DESCRIPTION'; else TO='PARAMETERS'; fi
-    $MAN -M ../pman/ $2 | col -b | sed -n -e "/SYNOPSIS/,/$TO/ p" | tail -r | tail -n +3 | tail -r
+    $MAN -M $PARENT_DIR $2 | col -b | sed -n -e "/SYNOPSIS/,/$TO/ p" | tail -r | tail -n +3 | tail -r
 else
-    echo FML
-    $MAN -M ../pman/ $1
+    $MAN -M $PARENT_DIR $1
 fi
