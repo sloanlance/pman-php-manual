@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # from http://stackoverflow.com/a/697552/547956
 # get the absolute path of the executable
