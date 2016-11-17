@@ -8,6 +8,9 @@ PHP documentation in manpage format from the official PEAR package and a wrapper
 
   `composer global require sloanlance/pman-php-manual:dev-master`
   
+  It's important to note that the installation command shown at the top of the Packagist page for this package will **_not_** work.
+  Be sure to use this command instead.
+  
 ## Usage
 
 Use the `pman` script to display documentation pages:
