@@ -1,4 +1,17 @@
 # pman-php-manual
-PHP documentation manual pages from the PEAR package and a script to read them from CLI.
+PHP documentation in manpage format from the official PEAR package and a wrapper script, `pman`, to display them using the common `man` command.
 
-0. composer global require sloanlance/pman-php-manual:dev-master
+## Installation
+
+0. Be sure `~/.composer/vendor/bin` is included in the path.
+0. Use Composer to install:
+
+  `composer global require sloanlance/pman-php-manual:dev-master`
+  
+## Usage
+
+Use the `pman` script to display documentation pages:
+
+* `pman DateTime`
+* `pman realpath`
+* Etc.
