@@ -1,5 +1,5 @@
 {
-    "name":        "gonzaloserrano/pman-php-manual",
+    "name":        "sloanlance/pman-php-manual",
     "description": "PHP documentation manual pages from the PEAR package",
     "keywords":    ["pman", "PHP", "manual", "man", "pages"],
     "homepage":    "http://doc.php.net/",
